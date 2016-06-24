@@ -62,22 +62,16 @@ class KernelPerceptron(object):
         return correct / total  # self-explanatory: returns a % of correct answers
 
 
-dftest = pd.read_csv('/home/rosencrantz/Downloads/test.csv')
-dftrain = pd.read_csv('/home/rosencrantz/Downloads/train.csv')
-#df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data', header=None)
-#y = df.iloc[0:100, 4].values
-#y = np.where(y == 'Iris-setosa', -1, 1)
-#X = pd.DataFrame(df.iloc[0:100, [0, 2]].values)
-#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
-# We start by importing the Iris data for a quick test that we can converge
-X_train = dftrain.iloc[:,1].values
-y_train = dftrain.iloc[:,[2,4,5,6]].values
-X_test = dftest.iloc[:,1].values
-y_test = dftest.iloc[:,[2,4,5,6]].values
+df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data', header=None)
+y = df.iloc[0:100, 4].values
+y = np.where(y == 'Iris-setosa', -1, 1)
+X = pd.DataFrame(df.iloc[0:100, [0, 2]].values)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+#We start by importing the Iris data for a quick test that we can converge
 
 kp = KernelPerceptron()
 print('Standard Perceptron:')
-kp.fit(X_train, y_train)  # this returns the string 'converged after 1 iteration,' far faster than Raschka's!
+kp.fit(X_train, y_train)  # this returns the string 'converged after 1 iteration.' Not bad!
 kp.score(X_train, y_train)
 kp.score(X_test, y_test)  # you'll notice we do perfect on the test data as well.
 
