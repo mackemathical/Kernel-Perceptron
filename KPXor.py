@@ -67,7 +67,7 @@ X = pd.DataFrame(np.random.randn(200, 2))
 y = np.logical_xor(X.iloc[:, 0] > 0, X.iloc[:, 1] > 0)
 y = np.where(y, 1, -1)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
-# We start by creating some non-linearly separable data, as Raschka does when testing
+# We start by creating some non-linearly separable data, borrowed from Sebstian Raschka
 
 kp = KernelPerceptron()
 print('Standard Perceptron:')
