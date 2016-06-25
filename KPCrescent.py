@@ -73,11 +73,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 kp = KernelPerceptron()
 print('Standard Perceptron:')
 kp.fit(X_train, y_train)  # Once again, no convergence.
-kp.score(X_train, y_train)  # 76% training accuracy
-kp.score(X_test, y_test)  # and 77% test accuracy! Alright!
+print('training accuracy of ' + str(kp.score(X_train, y_train)))  # 76% training accuracy
+print('test accuracy of ' + str(kp.score(X_test, y_test)))  # and 77% test accuracy! Alright!
 
 kpk = KernelPerceptron(kernel='rbf')  # now we test it with the RBF kernel
 print('RBF Kernel:')
 kpk.fit(X_train, y_train)  # Woah, wait, it converged?
-kpk.score(X_train, y_train)
-kpk.score(X_test, y_test)  # The kernel is so powerful, it can split the two moons apart with 100% test accuracy!
+print('training accuracy of ' + str(kpk.score(X_train, y_train)))
+print('test accuracy of ' + str(kpk.score(X_test, y_test)))  # The kernel is so powerful, it can split the two moons apart with 100% test accuracy!
